@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#061126">
+<title>TECH — Your World of Technology</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#061126;color:#f4f8ff;font-family:Arial,sans-serif}
+header{padding:22px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #18345b}
+.logo{width:46px;height:46px;border:2px solid #168bff;border-radius:14px;display:grid;place-items:center;color:#28c9ff;font-size:30px;font-weight:bold;box-shadow:0 0 18px #087bff55}
+.brand{font-size:24px;font-weight:bold;letter-spacing:3px}
+.brand span{color:#22baff}
+main{padding:28px 18px;max-width:700px;margin:auto}
+.hero{text-align:center;padding:28px 0 35px}
+.tag{color:#38caff;font-size:12px;letter-spacing:3px}
+h1{font-size:43px;line-height:1.1;margin:18px 0}
+h1 span{color:#28baff}
+p{color:#a8bad6;line-height:1.6}
+button{cursor:pointer;border:0;border-radius:12px;padding:14px 18px;font-weight:bold;font-size:15px}
+.primary{background:linear-gradient(100deg,#087bff,#19c5ff);color:white}
+.search{display:flex;gap:8px;margin:18px 0 30px}
+input{min-width:0;flex:1;background:#0c1d38;color:white;border:1px solid #29476d;border-radius:12px;padding:14px;font-size:15px}
+h2{font-size:22px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{background:#0b1b34;border:1px solid #1b365b;border-radius:16px;padding:18px 14px;text-align:left;color:white;min-height:130px}
+.tile b{display:block;margin:12px 0 6px;font-size:16px}
+.tile small{color:#9eb4d2;line-height:1.5}
+.symbol{font-size:25px}
+.panel{margin-top:28px;background:#0b1b34;border:1px solid #1b365b;border-radius:18px;padding:18px}
+#answer{white-space:pre-wrap;color:#c6d8f2;line-height:1.6}
+footer{text-align:center;color:#7085a5;font-size:12px;padding:30px}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">T</div>
+<div class="brand">TE<span>CH</span></div>
+</header>
+<main>
+<section class="hero">
+<div class="tag">YOUR WORLD. YOUR TECHNOLOGY.</div>
+<h1>Explore the future<br>with <span>TECH AI.</span></h1>
+<p>Your place to explore technology, discover devices and learn about artificial intelligence.</p>
+</section>
+
+<h2>What do you want to explore?</h2>
+<div class="grid">
+<button class="tile" onclick="ask('iPhone help')"><span class="symbol">📱</span><b>iPhone Help</b><small>Tips, settings and troubleshooting</small></button>
+<button class="tile" onclick="ask('Artificial intelligence')"><span class="symbol">🤖</span><b>AI World</b><small>Discover artificial intelligence</small></button>
+<button class="tile" onclick="ask('Device comparisons')"><span class="symbol">⚡</span><b>Compare Devices</b><small>Explore phones and gadgets</small></button>
+<button class="tile" onclick="ask('Technology news')"><span class="symbol">🌐</span><b>Tech Discoveries</b><small>Explore the world of technology</small></button>
+</div>
+
+<section class="panel">
+<h2>Ask TECH</h2>
+<p>What would you like to know about technology?</p>
+<div class="search">
+<input id="question" placeholder="Ask a tech question..." />
+<button class="primary" onclick="ask(document.getElementById('question').value)">Ask</button>
+</div>
+<div id="answer">Your technology journey starts here.</div>
+</section>
+</main>
+<footer>TECH © 2026 · Explore. Discover. Innovate.</footer>
+<script>
+function ask(q){
+q=(q||'').trim();
+if(!q)return;
+document.getElementById('question').value=q;
+let a='You asked about '+q+'. This demo website does not have a live AI connection yet. You can connect an AI service in a future step.';
+if(/iphone/i.test(q))a='iPhone tip: Open Settings to explore your device. For a specific problem, describe what is happening so you can find the right solution.';
+else if(/artificial intelligence|\\bai\\b/i.test(q))a='Artificial intelligence (AI) is technology that can perform tasks such as answering questions, recognizing images and helping create content.';
+else if(/compar|device/i.test(q))a='When comparing devices, check battery life, performance, camera features, software support and price.';
+else if(/news|discover/i.test(q))a='Explore topics such as AI, smartphones, robotics, computers and space technology. Live news is not connected in this demo.';
+document.getElementById('answer').textContent=a;
+}
+document.getElementById('question').addEventListener('keydown',e=>{if(e.key==='Enter')ask(e.target.value)});
+</script>
+</body>
+</html>
